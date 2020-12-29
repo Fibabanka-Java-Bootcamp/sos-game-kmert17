@@ -6,7 +6,8 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-        // SOS
+        // Sos
+        int counter = 0;
         int n = 0;
         int player = 0;
         int computer = 0;
@@ -24,15 +25,41 @@ public class Main {
         drawGameBoard(n, gameBoard);
         System.out.println();
         System.out.println("Player: " + player + " Computer: " + computer);
-        System.out.println("Choose position you play. First choose row, second choose column!");
-        do {
-            row = scan.nextInt();
-            column = scan.nextInt();
-        } while(gameBoard[row][column]=='X'||gameBoard[row][column]=='O');
+        // Skoru yaz
+        // S seç
+        while(true) {
+            System.out.println("Choose position you play. First choose row, second choose column!");
+            do {
+                row = scan.nextInt();
+                column = scan.nextInt();
+            } while(gameBoard[row-1][column-1]=='X'||gameBoard[row-1][column-1]=='O');
 
-        gameBoard[row][column] = 'X';
-        drawGameBoard(n, gameBoard);
+            gameBoard[row - 1][column - 1] = 'X';
+            drawGameBoard(n, gameBoard);
+            counter++;
 
+            // kontrol et ve eğer sos yaptıysan 1 arttır kendininkini.
+            System.out.println("Player: " + player + " Computer: " + computer);
+            if(counter==n*n) {
+                break;
+            }
+            // O seçsin
+            do {
+                row = rand.nextInt(n) + 1;
+                column = rand.nextInt(n) + 1;
+            } while(gameBoard[row-1][column-1]=='X'||gameBoard[row-1][column-1]=='O');
+
+            gameBoard[row - 1][column - 1] = 'O';
+            drawGameBoard(n, gameBoard);
+            // kontrol et ve eğer sos yaptıysa 1 arttır onunkini.
+            counter++;
+            System.out.println("Player: " + player + " Computer: " + computer);
+
+            if(counter==n*n) {
+                break;
+            }
+        }
+        // eğer oyun bittiyse kazananı belirle
 
 
 
