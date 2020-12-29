@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
-
+        // SOS
         int n = 0;
         int player = 0;
         int computer = 0;
